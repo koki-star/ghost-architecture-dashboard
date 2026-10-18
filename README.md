@@ -2,17 +2,27 @@
 
 AD371 companion prototype: a small interactive dashboard that explains a simplified Ghost publishing workflow. It uses plain HTML, CSS, and JavaScript. All interactions run in the browser. There is no Ghost installation, real database, backend, account, API key, environment variable, or package dependency.
 
+## Links
+
+- [Public GitHub repository](https://github.com/koki-star/ghost-architecture-dashboard)
+- [Live website](https://koki-star.github.io/ghost-architecture-dashboard/)
+
 ## Run locally
 
-Open `index.html` in a browser, or run this from the `ghost-dashboard` directory with Python 3:
+Clone the repository:
+
+```sh
+git clone https://github.com/koki-star/ghost-architecture-dashboard.git
+cd ghost-architecture-dashboard
+```
+
+Open `index.html` in a browser. You can also serve the project folder with Python 3:
 
 ```sh
 python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
 Visit http://127.0.0.1:8000. Stop the server with Control+C.
-
-Once a public repository exists, add its exact clone command here. Deployment and repository URLs are still pending.
 
 ## Features
 
@@ -60,21 +70,22 @@ AI tool: Codex in the desktop app. The exact underlying model identifier was not
 
 Customization by AI to fit this request: a reduced four-component scope, a manual flow rather than timed animation, native buttons, responsive CSS, explicit simulation labels, and source-backed corrections. Student review and any student-authored changes must be recorded honestly as they occur. Do not describe AI changes as independent student work.
 
-## Local QA status
+## QA status
 
-The checks recorded in `QA.md` passed for the four controls, publishing flow, Reset, and an automated rapid sequence. Chrome layout checks covered 1920 × 1080, 768 × 1024, and 375 × 812; Chrome keyboard and Console/Network checks passed. Safari passed the core component, flow, and Reset checks as a second browser engine. One local Chrome reload reported DOMContentLoaded at 81 ms and Load at 201 ms; this is a limited local measurement, not a production benchmark. **Screen-reader announcements were not tested**, and viewport screenshots were inspected but not saved as evidence. Full assignment QA remains open.
+Codex's local checks passed in Chrome and Safari as recorded in `QA.md`. The deployed site also passed the listed Chrome checks, including a 375 × 812 mobile view. The local load timing is a limited measurement, not a production benchmark. **Screen-reader announcements were not tested.** Student review is still pending.
 
 ## Assignment status
 
 | Requirement | Status |
 | --- | --- |
-| Initial prototype | Implemented; see QA log for checks actually completed |
+| Initial prototype | Implemented; see `QA.md` for checks actually completed |
 | Architecture explanation and sources | Reverified against official Ghost docs and source on October 17, 2026; student review pending |
 | AI prompts and audit | Available staged prompts recorded; see `AI-PROMPTS.md` for gaps |
-| Full QA and evidence | Local checks logged; screen-reader announcements and saved evidence pending |
-| Public GitHub repository | Pending |
-| Live deployment and final URL checks | Pending |
-| 5–7 minute screen + face recording | Pending |
+| QA | Local Chrome and Safari checks and deployed Chrome checks recorded; screen-reader announcements unverified |
+| Public GitHub repository | [Published](https://github.com/koki-star/ghost-architecture-dashboard) |
+| Live deployment | [GitHub Pages built and checked in Chrome](https://koki-star.github.io/ghost-architecture-dashboard/) |
+| Student review | Pending |
+| 5–7 minute screen-and-webcam recording | Pending |
 | Canvas submission | Pending |
 
 ## Files
