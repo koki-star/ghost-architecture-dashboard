@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ghost Architecture Explorer</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to dashboard</a>
+  <header class="page-header">
+    <p class="eyebrow">AD371 · Architecture study</p>
+    <h1>Ghost Architecture Explorer</h1>
+    <p>Explore the parts of a publishing platform, then follow a post from editor to reader.</p>
+  </header>
+
+  <main id="main">
+    <section class="panel" aria-labelledby="architecture-heading">
+      <div class="section-heading">
+        <h2 id="architecture-heading">1. Explore the architecture</h2>
+        <span class="badge">Simplified model</span>
+      </div>
+      <p>Choose a component to learn its role. These are logical parts, not four separate servers.</p>
+      <div class="components" role="group" aria-label="Ghost components">
+        <button class="component" data-component="admin" aria-pressed="true" aria-controls="component-detail">
+          <span class="number" aria-hidden="true">01</span>
+          <strong>Admin Editor</strong><span>Write and manage posts</span>
+        </button>
+        <button class="component" data-component="server" aria-pressed="false" aria-controls="component-detail">
+          <span class="number" aria-hidden="true">02</span>
+          <strong>Ghost Server</strong><span>Process publishing requests</span>
+        </button>
+        <button class="component" data-component="database" aria-pressed="false" aria-controls="component-detail">
+          <span class="number" aria-hidden="true">03</span>
+          <strong>Database</strong><span>Store publication data</span>
+        </button>
+        <button class="component" data-component="website" aria-pressed="false" aria-controls="component-detail">
+          <span class="number" aria-hidden="true">04</span>
+          <strong>Public Website</strong><span>Show content to readers</span>
+        </button>
+      </div>
+      <div class="detail" id="component-detail" aria-live="polite" aria-atomic="true">
+        <h3 id="detail-title">Admin Editor</h3>
+        <p id="detail-text">The browser interface where an author writes and manages posts. It communicates with Ghost through the Admin API over HTTP.</p>
+      </div>
+      <p class="architecture-note"><strong>Architectural interpretation:</strong> a modular monolith at the core, with a separate browser admin client. Ghost Core handles APIs, server logic, and default theme rendering in one Node.js process. Its database is a separate persistence layer.</p>
+    </section>
+
+    <section class="panel" aria-labelledby="flow-heading">
+      <h2 id="flow-heading">2. Follow a publishing flow</h2>
+      <p>This is a local simulation using a sample post. It does not connect to Ghost or save a real post.</p>
+      <ol class="flow" aria-label="Simplified publishing and reading sequence">
+        <li>Author submits through the Admin API</li>
+        <li>Ghost checks the request</li>
+        <li>Ghost saves the published post</li>
+        <li>A reader requests the page; Ghost renders its theme</li>
+      </ol>
+      <div class="controls">
+        <button class="primary" id="next-step">Show publishing flow</button>
+        <button class="secondary" id="reset">Reset</button>
+      </div>
+      <div class="flow-status" role="status" aria-atomic="true">
+        <p class="eyebrow" id="step-count">Ready · 0 of 4 steps</p>
+        <h3 id="step-title">Sample post: My first Ghost post</h3>
+        <p id="step-text">Select “Show publishing flow” to begin. Use “Next step” to continue at your own pace.</p>
+      </div>
+    </section>
+
+    <section class="panel sources" aria-labelledby="sources-heading">
+      <h2 id="sources-heading">3. Sources and trade-off</h2>
+      <p>A single core application simplifies coordination, but its internal modules share a process and are not independently scaled services. This is our interpretation of the documented runtime boundaries.</p>
+      <ul>
+        <li><a href="https://github.com/TryGhost/Ghost/blob/main/docs/codebase/runtime-architecture.md">Ghost source: runtime architecture</a> — process boundaries and theme rendering.</li>
+        <li><a href="https://docs.ghost.org/architecture/">Ghost architecture documentation</a> — APIs and storage. MySQL is recommended for production; SQLite is used for local development.</li>
+      </ul>
+      <p>Scope: default theme-based publishing. Email, payments, caching, and optional external integrations are outside this small model.</p>
+    </section>
+  </main>
+  <footer>Independent student learning project · Built with HTML, CSS, and JavaScript with AI assistance.</footer>
+</body>
+</html>
